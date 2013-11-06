@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>SMSOption</title>
+<style type="text/css">
+.auto-style2 {
+	font-size: x-large;
+}
+.auto-style8 {
+	font-size: medium;
+}
+</style>
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<link href="../code.css" rel="stylesheet" type="text/css" />
+<script src="../rainbow.min.js"></script>
+</head>
+
+<body>
+
+<p class="auto-style2"><strong>AppotaPayment.h</strong></p>
+<p class="auto-style8">
+<pre><code data-language="c">#import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
+#import "Language.h"
+#import "AppotaProgressView.h"
+#import "AppotaAppleIAPItem.h"
+// up-front decl's
+@class AppotaPayment;
+@class AppotaEngine;
+@class AppotaAppleIAPItem;
+/*
+ * State for AppotaPayment handler
+ */
+
+typedef enum {
+    AppotaPaymentSucceed = 1,
+    AppotaPaymentFailed = 0,
+    AppotaPaymentSMSPending = 2,
+    AppotaPaymentSMSCanceled = 3,
+    AppotaPaymentSMSInValidAmount = 4,
+    AppotaPaymentClosed = 5,
+    AppotaPaymentCardInvalid = 6,
+    AppotaPaymentInvalidAmount = 7,
+    AppotaGetListSMSError = 11,
+    AppotaPaymentWrongFormatResponse = 12,    
+} AppotaPaymentState;
+
+/*
+ * Event handler cho kết quả trả về của Appota API
+ */
+typedef void(^AppotaPaymentHandler)(NSDictionary *apiDict, AppotaPaymentState status, NSError *error);
+
+@property BOOL isSandBoxMode;
+@property (nonatomic, strong) NSString *clientID;
+@property (nonatomic, strong) NSString *clientSecret;
+@property (nonatomic, strong) NSString *sandboxKey;
+@property (nonatomic, strong) NSString *inappKey;
+@property (readwrite) BOOL debugMode;
+
+#pragma mark -
+#pragma mark - Shared Appota API
+/*
+ * AppotaAPI singleton các API sẽ được gọi theo format [[AppotaAPI shareAPI] api];
+ */
++(AppotaPayment *)shareAPI;
+
+-(BOOL)handleOpenURL:(NSURL *)url;
+
+#pragma mark -
+#pragma mark - SMS
+- (void) makeSMSPaymentWithAmount:(int) amount
+                        withState:(NSString*) state
+                       withTarget:(NSString*) target
+                    withNoticeUrl:(NSString*) noticeUrl
+            withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeSMSPaymentWithListAmount:(NSArray*) listAmount
+                        withState:(NSString*) state
+                       withTarget:(NSString*) target
+                    withNoticeUrl:(NSString*) noticeUrl
+                  withDescription:(NSString*) description
+            withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeSMSPaymentWithState:(NSString*) state
+                      withTarget:(NSString*) target
+                   withNoticeUrl:(NSString*) noticeUrl
+                 withDescription:(NSString*) description
+           withCompletionHandler:(AppotaPaymentHandler) handler;
+
+-(void) getSMSInAppWithNoticeUrl:(NSString*) noticeURL
+                       withState:(NSString*) stateString
+                      withTarget:(NSString*) targetString
+                     withSMSType:(BOOL) isShortType
+           withCompletionHandler:(AppotaPaymentHandler) handler;
+
+#pragma mark -
+#pragma mark - Paypal
+
+- (void) makePaypalPaymentWithAmount:(float) amount
+                           withState:(NSString*) state
+                          withTarget:(NSString*) target
+                       withNoticeUrl:(NSString*) noticeUrl
+               withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makePaypalPaymentWithListAmount:(NSArray*) listAmount
+                           withState:(NSString*) state
+                          withTarget:(NSString*) target
+                       withNoticeUrl:(NSString*) noticeUrl
+                     withDescription:(NSString*) description
+               withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makePaypalPaymentWithState:(NSString*) state
+                         withTarget:(NSString*) target
+                      withNoticeUrl:(NSString*) noticeUrl
+                    withDescription:(NSString*) description
+              withCompletionHandler:(AppotaPaymentHandler) handler;
+#pragma mark -
+#pragma mark - Card
+
+-(void) makeCardPaymentWithCardCode:(NSString *)cardCode
+                     withCardSerial:(NSString *)cardSerial
+                     withCardVendor:(NSString *)cardVendor
+                          withState:(NSString*) state
+                         withTarget:(NSString*) target
+                      withNoticeUrl:(NSString*) noticeUrl
+              withCompletionHandler:(AppotaPaymentHandler) handler;
+
+-(void) makeCardPaymentWithState:(NSString*) state
+                      withTarget:(NSString*) target
+                   withNoticeUrl:(NSString*) noticeUrl
+                 withDescription:(NSString*) description
+           withCompletionHandler:(AppotaPaymentHandler) handler;
+
+#pragma mark - 
+#pragma mark - Bank
+
+- (void) makeBankPaymentWithAmount:(int) amount
+                         withState:(NSString*) state
+                        withTarget:(NSString*) target
+                     withNoticeUrl:(NSString*) noticeUrl
+                    withDesciption:(NSString *)description
+             withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeBankPaymentWithListAmount:(NSArray*) listAmount
+                         withState:(NSString*) state
+                        withTarget:(NSString*) target
+                     withNoticeUrl:(NSString*) noticeUrl
+                   withDescription:(NSString*) description
+             withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeBankPaymentWithState:(NSString*) state
+                       withTarget:(NSString*) target
+                    withNoticeUrl:(NSString*) noticeUrl
+                  withDescription:(NSString*) description
+            withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeApplePaymentWithItem:(AppotaAppleIAPItem*) item
+                        withState:(NSString*) state
+                        withTarget:(NSString*) target
+                     withNoticeUrl:(NSString*) noticeUrl
+                   withDescription:(NSString*) description
+             withCompletionHandler:(AppotaPaymentHandler) handler;
+
+- (void) makeApplePaymentWithListItem:(NSArray*) lisItem
+                        withState:(NSString*) state
+                       withTarget:(NSString*) target
+                    withNoticeUrl:(NSString*) noticeUrl
+                  withDescription:(NSString*) description
+            withCompletionHandler:(AppotaPaymentHandler) handler;
+
+
+-(void) checkTransactionInAppWithID:(NSString *)inApp_id
+              withCompletionHandler:(AppotaResultHandler) handler;
+
+- (void) checkUpdate;
+@end
+</code>
+</pre>
+</p>
+</body></html>

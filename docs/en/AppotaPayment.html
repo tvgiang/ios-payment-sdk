@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>AppotaPayment</title>
+<style type="text/css">
+.class_title {
+	font-size: x-large;
+}
+.auto-style2 {
+	color: #3298D5;
+}
+.auto-style7 {
+	border-style: none;
+	border-width: medium;
+	color: #0085D5;
+}
+.auto-style8 {
+	font-size: medium;
+}
+</style>
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<link href="../code.css" rel="stylesheet" type="text/css" />
+<script src="../rainbow.min.js"></script>
+</head>
+
+<body>
+
+<p class="class_title"><strong class="class_title">AppotaPayment</strong></p>
+<p>Inherits from: NSObject<br />
+Declared in: <a href="AppotaPaymentHeader.html">AppotaPayment.h</a></p>
+<p class="auto-style8"><strong>Tổng quan</strong></p>
+<p>AppotaPayment là class thực thi tất cả các chức năng chính của Payment SDK. 
+Class này cung cấp các hàm gọi đến các giao diện thanh toán cho từng hình thức 
+khác nhau.</p>
+<p class="auto-style8"><strong>Thuộc tính</strong></p>
+<table border="0" style="border-width: 0px">
+	<tr>
+		<td style="width: 154px" class="auto-style7">BOOL 
+		isSandBoxMode</td>
+		<td>Tùy chọn bật/tắt chế độ sandbox cho ứng dụng</td>
+	</tr>
+	<tr>
+		<td style="width: 154px" class="auto-style7">NSString *clientID</td>
+		<td>Mã clientID được hệ thống Appota cung cấp cho ứng dụng</td>
+	</tr>
+	<tr>
+		<td style="width: 154px" class="auto-style7">NSString *clientSecret</td>
+		<td>Chuỗi clientSecret được hệ thống Appota cung cấp 
+		cho ứng dụng</td>
+	</tr>
+	<tr>
+		<td style="width: 154px" class="auto-style7">NSString *sandboxKey</td>
+		<td>Chuối sandboxKey được hệ thống Appota cung cấp 
+		cho ứng dụng</td>
+	</tr>
+	<tr>
+		<td style="width: 154px" class="auto-style7">NSString *inappKey</td>
+		<td>Chuỗi inappKey được hệ thống Appota cung cấp cho 
+		ứng dụng</td>
+	</tr>
+	<tr>
+		<td style="width: 154px" class="auto-style7">BOOL 
+		debugMode</td>
+		<td>Tùy chọn bật/tắt chế độ debug</td>
+	</tr>
+</table>
+
+<p class="auto-style8"><strong>Kiểu định nghĩa</strong></p>
+<p><strong><a name="AppotaPaymentHandler">AppotaPaymentHandler</a></strong></p>
+<p>Được truyền vào khi gọi các phương thức thanh toán để 
+nhận dữ liệu khi quá trình khởi tạo giao dịch kết thúc.</p>
+
+<pre><code data-language="C">typedef void(^AppotaPaymentHandler)(NSDictionary *apiDict, AppotaPaymentState status, NSError *error);</code></pre>
+
+<p><strong><a name="AppotaPaymentState">AppotaPaymentState</a></strong></p>
+<p>Các giá trị trạng thái giao dịch được trả về khi quá 
+trình khởi tạo giao dịch kết thúc.</p>
+<pre><code data-language="C">typedef enum {
+&nbsp;&nbsp;&nbsp; AppotaPaymentSucceed = 1,
+&nbsp;&nbsp;&nbsp; AppotaPaymentFailed = 0,
+&nbsp;&nbsp;&nbsp; AppotaPaymentSMSPending = 2,
+&nbsp;&nbsp;&nbsp; AppotaPaymentSMSCanceled = 3,
+&nbsp;&nbsp;&nbsp; AppotaPaymentSMSInValidAmount = 4,
+&nbsp;&nbsp;&nbsp; AppotaPaymentClosed = 5,
+&nbsp;&nbsp;&nbsp; AppotaPaymentCardInvalid = 6,
+&nbsp;&nbsp;&nbsp; AppotaPaymentInvalidAmount = 7,
+&nbsp;&nbsp;&nbsp; AppotaGetListSMSError = 11,
+&nbsp;&nbsp;&nbsp; AppotaPaymentWrongFormatResponse = 12,
+} AppotaPaymentState;</code></pre>
+
+<p class="auto-style8"><strong>Phương thức</strong></p>
+<table border="1" class="gridtable">
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeSMSPaymentWithAmount">makeSMSPaymentWithAmount:(int) 
+		amount withState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức SMS với giá tiền 
+		cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeSMSPaymentWithListAmount">
+		makeSMSPaymentWithListAmount:(NSArray*) listAmount withState:(NSString*) 
+		state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+		withDescription:(NSString*) description 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức SMS với danh sách 
+		giá tiền cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeSMSPaymentWithState">
+		makeSMSPaymentWithState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Lấy cú pháp tin nhắn từ hệ thống (dành cho những ứng dụng tự thiết 
+		kế giao diện thanh toán, không sử dụng giao diện hiển thị của Appota 
+		SDK).</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makePaypalPaymentWithAmount">
+		makePaypalPaymentWithAmount:(float) amount withState:(NSString*) state 
+		withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức Paypal với giá 
+		tiền cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makePaypalPaymentWithListAmount">
+		makePaypalPaymentWithListAmount:(NSArray*) listAmount 
+		withState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức Paypal với danh 
+		sách giá tiền cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makePaypalPaymentWithState">
+		makePaypalPaymentWithState:(NSString*) state withTarget:(NSString*) 
+		target withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức Paypal cho phép 
+		người dùng nhập số tiền.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeCardPaymentWithCardCode">
+		makeCardPaymentWithCardCode:(NSString *)cardCode 
+		withCardSerial:(NSString *)cardSerial withCardVendor:(NSString 
+		*)cardVendor withState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Thanh toán bằng thẻ cào trực tiếp (dành cho những ứng dụng tự thiết 
+		kế giao diện thanh toán, không sử dụng giao diện hiển thị của Appota 
+		SDK).</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeCardPaymentWithState">
+		makeCardPaymentWithState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức thẻ cào.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeBankPaymentWithAmount">
+		makeBankPaymentWithAmount:(float) amount withState:(NSString*) state 
+		withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức internet banking 
+		với giá tiền cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makePaypalPaymentWithListAmount">
+		makeBankPaymentWithListAmount:(NSArray*) listAmount 
+		withState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức internet banking 
+		với danh sách giá tiền cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makePaypalPaymentWithState">
+		makeBankPaymentWithState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức internet banking 
+		cho phép người dùng tự nhập số tiền.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeApplePaymentWithItem">
+		makeApplePaymentWithItem:(AppotaAppleIAPItem*) item 
+		withState:(NSString*) state withTarget:(NSString*) target 
+		withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) 
+		description withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức Apple Payment với 
+		một IAP item cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td><a href="#makeApplePaymentWithListItem">
+		makeApplePaymentWithListItem:(NSArray*) lisItem withState:(NSString*) 
+		state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+		withDescription:(NSString*) description 
+		withCompletionHandler:(AppotaPaymentHandler) handler</a><br />
+		<em>Hiển thị giao diện thanh toán sử dụng phương thức Apple Payment với 
+		danh sách IAP item cho trước.</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td>checkTransactionInAppWithID:(NSString *)inApp_id 
+		withCompletionHandler:(AppotaResultHandler) handler</td>
+	</tr>
+	<tr>
+		<td style="width: 122px">void</td>
+		<td>checkUpdate</td>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+<p class="method_detail">(void) <a name="makeSMSPaymentWithAmount">
+makeSMSPaymentWithAmount</a>:(int) amount withState:(NSString*) state 
+withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức SMS với giá tiền cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- amount: Giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- handler: Handler được gọi đến khi kết thúc 
+khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeSMSPaymentWithListAmount">
+makeSMSPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
+state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức SMS với danh sách giá tiền 
+cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- listAmount: Danh sách giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeSMSPaymentWithState">
+makeSMSPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
+withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Lấy cú pháp tin nhắn từ hệ thống (dành cho những ứng dụng tự thiết kế giao 
+diện thanh toán, không sử dụng giao diện hiển thị của Appota SDK).</p>
+<p><strong>Parameters:</strong></p>
+<p>- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makePaypalPaymentWithAmount">
+makePaypalPaymentWithAmount</a>:(float) amount withState:(NSString*) state 
+withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức Paypal với giá tiền cho 
+trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- amount: Giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makePaypalPaymentWithListAmount">
+makePaypalPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
+state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức Paypal với danh sách giá 
+tiền cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- listAmount: Danh sách giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makePaypalPaymentWithState">
+makePaypalPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
+withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức Paypal cho phép người dùng 
+nhập số tiền.</p>
+<p><strong>Parameters:</strong></p>
+<p>- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeCardPaymentWithCardCode">
+makeCardPaymentWithCardCode</a>:(NSString *)cardCode withCardSerial:(NSString 
+*)cardSerial withCardVendor:(NSString *)cardVendor withState:(NSString*) state 
+withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Thanh toán bằng thẻ cào trực tiếp (dành cho những ứng dụng tự thiết kế giao 
+diện thanh toán, không sử dụng giao diện hiển thị của Appota SDK).</p>
+<p><strong>Parameters:</strong></p>
+<p>- cardCode: Mã thẻ<br />
+- cardSerial: Số sê-ri thẻ<br />
+- cardVendor: Nhà cung cấp. Hiện tại hỗ trợ: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">vinaphone</span>: 
+Thẻ Vinaphone<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">mobifone</span>:&nbsp; 
+Thẻ Mobifone<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">viettel</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Thẻ Viettel<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">fpt</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Thẻ FPT Gate<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style2">mega</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Thẻ MegaCard&nbsp;&nbsp; <br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeCardPaymentWithState">
+makeCardPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
+withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức thẻ cào.</p>
+<p><strong>Parameters:</strong></p>
+<p>- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeBankPaymentWithAmount">
+makeBankPaymentWithAmount</a>:(float) amount withState:(NSString*) state 
+withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức internet banking với giá 
+tiền cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- amount: Giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeBankPaymentWithListAmount">
+makeBankPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
+state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức internet banking với danh 
+sách giá tiền cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- listAmount: Danh sách giá tiền<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeBankPaymentWithState">
+makeBankPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
+withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức internet banking cho phép 
+người dùng tự nhập số tiền.</p>
+<p><strong>Parameters:</strong></p>
+<p>- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeApplePaymentWithItem">
+makeApplePaymentWithItem</a>:(AppotaAppleIAPItem*) item withState:(NSString*) 
+state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức Apple Payment với một IAP 
+item cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- items: IAP Item<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p class="method_detail">(void) <a name="makeApplePaymentWithListItem">
+makeApplePaymentWithListItem</a>:(NSArray*) lisItem withState:(NSString*) state 
+withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
+withDescription:(NSString*) description 
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+<p>Hiển thị giao diện thanh toán sử dụng phương thức Apple Payment với danh sách 
+IAP item cho trước.</p>
+<p><strong>Parameters:</strong></p>
+<p>- item: Danh sách IAP items<br />
+- state: Chuỗi state tùy biến cho dev gửi lên<br />
+- target: Chuỗi target tùy biến cho dev gửi lên<br />
+- noticeUrl: URL được gọi khi kết thúc giao dịch<br />
+- description: Mô tả chi tiết cho thanh toán<br />
+- handler: Handler được gọi đến khi kết thúc khởi tạo giao dịch</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>AppotaPaymentResult</title>
+<style type="text/css">
+.auto-style2 {
+	font-size: x-large;
+}
+.auto-style8 {
+	font-size: medium;
+}
+
+pre, code {
+    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+pre {
+    background: #dce9ef;
+    word-wrap: break-word;
+    margin: 0px;
+    padding: 10px;
+    color: #000;
+    font-size: 12px;
+    margin-bottom: 20px;
+	line-height: 16px;
+	border: 1px solid #76c2e7;
+}
+
+</style>
+<link href="../main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="auto-style2"><strong>AppotaAppleIAPItem.h</strong></p>
+<p class="auto-style8">
+<pre><code data-language="c">#import <Foundation/Foundation.h>
+
+@interface AppotaAppleIAPItem : NSObject
+{
+    NSString *productId;
+    NSString *description;
+    float price;
+}
+
+#pragma mark - Getter and setter
+- (id) initWithProductID:(NSString*) productId_
+               withPrice:(float) price_
+         withDescription:(NSString*) description_;
+
+- (NSString *)productId;
+
+- (void)setProductId:(NSString *)newValue;
+
+- (NSString *)description;
+
+- (void)setDescription:(NSString *)newValue;
+
+- (float)price;
+
+- (void)setPrice:(float)newValue;
+
+@end
+</code>
+</pre>
+</p>
+
+</body>
+
+</html>

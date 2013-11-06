@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>SMSOption</title>
+<style type="text/css">
+.auto-style1 {
+	font-size: large;
+}
+.auto-style2 {
+	font-size: x-large;
+}
+.auto-style8 {
+	font-size: medium;
+}
+.auto-style9 {
+	border-style: none;
+	border-width: medium;
+	color: #0085D5;
+}
+</style>
+<link href="../main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="auto-style2"><strong>AppotaAppleIAPItem</strong></p>
+<p>Inherits from: NSObject<br />
+Declared in: <a href="AppotaAppleIAPItemHeader.html">AppotaAppleIAPItem.h</a></p>
+<p class="auto-style8"><strong>Tổng quan</strong></p>
+<p>AppotaAppleIAPItem là class định nghĩa IAP item trên hệ thống Appota Payment, 
+được sử dụng để thanh toán với Apple Payment.</p>
+<p class="auto-style1"><strong class="auto-style8">Thuộc tính</strong></p>
+<table border="0" style="border-width: 0px">
+	<tr>
+		<td style="width: 144px" class="auto-style9">NSString *productId</td>
+		<td>ID của item được hệ thống Appota cung cấp</td>
+	</tr>
+	<tr>
+		<td style="width: 144px" class="auto-style9">NSString *description</td>
+		<td>Mô tả item</td>
+	</tr>
+	<tr>
+		<td style="width: 144px" class="auto-style9">float price</td>
+		<td>Giá item</td>
+	</tr>
+</table>
+
+<p class="auto-style8"><strong>Phương thức</strong></p>
+<table border="1" style="width: 100%" class="gridtable">
+	<tr>
+		<td style="width: 122px">constructor</td>
+		<td>initWithProductID:(NSString*) productId_ withPrice:(float) price_ 
+		withDescription:(NSString*) description_<br />
+		<em>Hàm khởi tạo</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(void)</td>
+		<td>setProductId:(NSString *)newValue;<br />
+		<em>Đặt giá trị productId</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(NSString *)</td>
+		<td>productId<br />
+		<em>Lấy giá trị productId</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(void)</td>
+		<td>setDescription:(NSString *)newValue<br />
+		<em>Đặt giá trị trường description </em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(NSString *)</td>
+		<td>description<br />
+		<em>Lấy giá trị trường description</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(void)</td>
+		<td>setPrice:(float)newValue<br />
+		<em>Đặt giá trị trường price</em></td>
+	</tr>
+	<tr>
+		<td style="width: 122px">(float)</td>
+		<td>price<br />
+		<em>Lấy giá trị trường price</em></td>
+	</tr>
+	</table>
+
+</body>
+
+</html>
