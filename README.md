@@ -35,12 +35,12 @@ StoreKit.framework AudioToolbox.framework MobileCoreServices.framework AVFoundat
 CoreVideo.framework libxml2.dylib CoreMedia.framework AdSupport.framework libsqlite3.dylib
 ```
 
-![](step1.jpg)
+![](docs/vn/step1.jpg)
 
 Trong project build settings, tìm đến mục Other Linker Flags, thêm vào 2
 giá trị: -ObjC, -all\_load, -lc++.
 
-![](step2.jpg)
+![](docs/vn/step2.jpg)
 
 Import headers vào trong source files:\
  Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
@@ -57,7 +57,7 @@ với URL Schemes là appotaCLIENT\_ID.\
  Ví dụ nếu CLIENT\_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì
 schemes sẽ là appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
 
-![](step3.jpg)
+![](docs/vn/step3.jpg)
 
 **2. Cấu hình SDK**
 
