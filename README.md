@@ -30,7 +30,9 @@ Link Binary with Libraries. Click vào nút ‘+’ và chọn để add các
 framework:
 
 ```
-SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework, MessageUI.framework, StoreKit.framework AudioToolbox.framework MobileCoreServices.framework AVFoundation.framework OpenGLES.framework CoreVideo.framework libxml2.dylib CoreMedia.framework AdSupport.framework libsqlite3.dylib
+SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework, MessageUI.framework, 
+StoreKit.framework AudioToolbox.framework MobileCoreServices.framework AVFoundation.framework OpenGLES.framework 
+CoreVideo.framework libxml2.dylib CoreMedia.framework AdSupport.framework libsqlite3.dylib
 ```
 
 ![](step1.jpg)
