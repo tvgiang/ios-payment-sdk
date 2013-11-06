@@ -146,4 +146,4 @@ ví dụ:
         [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
     }];
 
- ![](sample1.png) ![](sample2.png) ![](sample3.png) ![](sample4.png)
+ ![](docs/vn/sample1.png)&nbsp;![](docs/vn/sample2.png)&nbsp;![](docs/vn/sample3.png)&nbsp;![](docs/vn/sample4.png)
