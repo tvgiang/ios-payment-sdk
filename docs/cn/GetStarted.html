@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Android SDK - Get Started</title>
+<style type="text/css">
+.class_title {
+	font-size: x-large;
+}
+.auto-style1 {
+	font-size: large;
+}
+</style>
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<link href="../code.css" rel="stylesheet" type="text/css" />
+<script src="../rainbow.min.js"></script>
+
+</head>
+
+<body>
+
+<p class="class_title"><strong>Get Started</strong></p>
+<p>Appota Payment SDK cho iOS là cách đơn giản nhất để tích hợp thanh toán 
+cho ứng dụng của bạn trên hệ thống Appota. SDK này cung cấp giải pháp cho các 
+hình thức thanh toán: SMS, thẻ cào, internet banking, Paypal và Apple 
+Payment.</p>
+<p class="auto-style1"><strong>Các bước tích hợp SDK:</strong></p>
+<p>1. Cài đặt Appota SDK</p>
+<p>2. Cấu hình SDK</p>
+<p>3. Tích hợp</p>
+<p>&nbsp;</p>
+<p class="auto-style1"><strong>1. Cài đặt Appota SDK</strong></p>
+<p><strong>Thêm Appota.framework vào project</strong></p>
+<p>Kéo thả thư mục AppotaSDK.framework và file AppotaBundle.bundle vào project 
+của bạn.<br />
+<br />
+Tick vào checkbox: “Copy items into destination group's folder (if needed)”.<br />
+<br />
+Trong mục project app’s target settings, tìm mục Build phases và mở Link Binary 
+with Libraries. Click vào nút ‘+’ và chọn để add các framework:</p>
+<pre>SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework, MessageUI.framework, StoreKit.framework AudioToolbox.framework MobileCoreServices.framework AVFoundation.framework OpenGLES.framework CoreVideo.framework libxml2.dylib CoreMedia.framework AdSupport.framework libsqlite3.dylib</pre>
+<p><img height="300" src="step1.jpg" width="553" /></p>
+<p>Trong project build settings, tìm đến mục Other Linker Flags, thêm vào 2 giá 
+trị: -ObjC, -all_load, -lc++.</p>
+<p><img height="312" src="step2.jpg" width="553" /></p>
+<p>Import headers vào trong source files:<br />
+Trong source file mà bạn cần sử dụng thư viện Appota SDK, import: </p>
+<pre>#import &lt;AppotaSDK/AppotaSDK.h&gt;</pre>
+<p><strong>Config plist với CLIENT_KEY</strong><br />
+<br />
+Thêm 1 trường AppotaClientId với giá trị là CLIENT_ID (chi tiết về CLIENT_ID xem 
+ở mục lấy ACCESS_TOKEN).<br />
+Add thêm schema: Thêm 1 trường URL types kiểu Array. Tạo thêm 1 item với URL 
+Schemes là appotaCLIENT_ID.<br />
+<br />
+Ví dụ nếu CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì schemes sẽ 
+là appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.</p>
+<p><img height="252" src="step3.jpg" width="578" /></p>
+<p class="auto-style1"><strong>2. Cấu hình SDK</strong></p>
+<p><strong>&nbsp;Config AppotaAPI</strong></p>
+<p>Các hàm của AppotaSDK được sử dụng qua AppotaPayment. Có thể gọi AppotaPayment qua 
+[AppotaPayment shareAPI].<br />
+<br />
+Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRET, INAPP_ID 
+(chỉ cần gọi 1 lần duy nhất):<br />
+<br />
+Đối với ứng dụng đang ở trạng thái sandbox:<br />
+</p>
+<pre>AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.isSandBoxMode = YES;
+appotaPayment.clientID = SAND_BOX_CLIENT_ID;
+appotaPayment.clientSecret = SAND_BOX_CLIENT_SECRET;
+appotaPayment.inappKey = SAND_BOX_INAPP_API_KEY;
+appotaPayment.sandboxKey = SAND_BOX_KEY;
+</pre>
+<p>Đối với ứng dụng đang ở trạng thái publish:</p>
+<pre>AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.clientID = CLIENT_ID;
+appotaPayment.clientSecret = CLIENT_SECRET;
+appotaPayment.inappKey = INAPP_API_KEY;</pre>
+<p>Các tham số CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY, SAND_BOX_CLIENT_ID, 
+SAND_BOX_CLIENT_SECRET, SAND_BOX_INAPP_API_KEY, SAND_BOX_KEY có thể xem tại
+<a href="https://developer.appota.com/manage-content.html">
+https://developer.appota.com/manage-content.html</a> trong phần quản lý ứng 
+dụng.</p>
+<p><strong>&nbsp;Config handleOpenURL</strong></p>
+<p>Trong AppDelegate của ứng dụng gọi hàm [[Appota shareAPI] handleOpenURL:url] 
+như sau:</p>
+<pre><code>- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {<br />     return [[AppotaAPI shareAPI] handleOpenURL:url];
+}</code></pre>
+<p>Đối với trường hợp bạn đã sử dụng SDK khác có đặt hàm handleOpenURL tại 
+AppDelegate rồi (ví dụ FacebookSDK) có thể gọi [[AppotaAPI shareAPI] 
+handleOpenURL:url] trước khi return như sau:</p>
+<pre>- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {
+&nbsp;&nbsp;&nbsp;[[AppotaAPI shareAPI] handleOpenURL:url];
+return [self.facebookSDKSession handleOpenURL:url];
+}</pre>
+<p class="auto-style1"><strong>3. Tích hợp thanh toán</strong></p>
+<p>Appota Payment SDK cung cấp lớp <a href="AppotaPayment.html">AppotaPayment</a> 
+đóng gói toàn bộ giao diện của từng hình thức thanh toán, để tích hợp bất cứ 
+hình thức thanh toán nào chỉ cần gọi các hàm tương ứng được cung cấp sẵn (tham 
+khảo AppotaPaymentTest).</p>
+<p class="auto-style1"><strong>4 - Chạy SDK Samples</strong></p>
+<p>- Yêu cầu: Xcode 4.6, iOS SDK 6 trở lên.</p>
+<p>- Mở AppotaPaymentTest.xcodeproj để 
+chạy sample.</p>
+<p>- Sử dụng SDK trong example:</p>
+<p>Tất cả các API của SDK đều được gọi qua 1 hàm, ví dụ:<br />
+makeSMSPaymentWithAmount</p>
+<p>Kết quả trả về trong block của hàm qua Appota AppotaPaymentHandler (tham 
+khảo 
+AppotaPayment.h trong SDK). Giá trị của kết quả có thể xác định qua giá trị của 
+NSDictionary, AppotaPaymentState và NSError trả về qua AppotaPaymentHandler. 
+(Các state của AppotaPaymentState tham khảo AppotaPayment.h trong SDK)</p>
+<p>Dev cần đặt code xử lý kết quả của payment trong block của payment API ví dụ:</p>
+<pre>[appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
+// Xử lý kết quả của payment ở đây
+    [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
+}];
+</pre>
+<p>&nbsp;<img src="sample1.png" width="200" />
+<img src="sample2.png" width="200"  />
+<img src="sample3.png" width="200"  />
+<img src="sample4.png" width="200" /></p>
+</body>
+
+</html>
