@@ -112,7 +112,7 @@ handleOpenURL:url] trước khi return như sau:
 openURL:(NSURL *)url
 sourceApplication:(NSString *)sourceApplication
 annotation:(id)annotation {
-    [[AppotaAPI shareAPI] handleOpenURL:url];
+    [[AppotaAPI shareAPI] handleOpenURL:url];
     return [self.facebookSDKSession handleOpenURL:url];
 }
 ```
