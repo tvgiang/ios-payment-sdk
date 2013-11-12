@@ -108,13 +108,13 @@ AppDelegate rồi (ví dụ FacebookSDK) có thể gọi [[AppotaAPI shareAPI]
 handleOpenURL:url] trước khi return như sau:
 
 ``` objective-c
-    - (BOOL)application:(UIApplication *)application
-    openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-    annotation:(id)annotation {
-       [[AppotaAPI shareAPI] handleOpenURL:url];
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {
+    [[AppotaAPI shareAPI] handleOpenURL:url];
     return [self.facebookSDKSession handleOpenURL:url];
-    }
+}
 ```
 
 **3. Tích hợp thanh toán**
@@ -132,8 +132,7 @@ hình thức thanh toán nào chỉ cần gọi các hàm tương ứng được
 
 - Sử dụng SDK trong example:
 
-Tất cả các API của SDK đều được gọi qua 1 hàm, ví dụ:\
- makeSMSPaymentWithAmount
+Tất cả các API của SDK đều được gọi qua 1 hàm, ví dụ: makeSMSPaymentWithAmount
 
 Kết quả trả về trong block của hàm qua Appota AppotaPaymentHandler (tham
 khảo AppotaPayment.h trong SDK). Giá trị của kết quả có thể xác định qua
@@ -144,9 +143,12 @@ AppotaPayment.h trong SDK)
 Dev cần đặt code xử lý kết quả của payment trong block của payment API
 ví dụ:
 
-    [appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
+``` objective-c
+[appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" 
+withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
     // Xử lý kết quả của payment ở đây
-        [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
-    }];
+    [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
+}];
+```
 
  ![](docs/vn/sample1.png)&nbsp;![](docs/vn/sample2.png)&nbsp;![](docs/vn/sample3.png)&nbsp;![](docs/vn/sample4.png)
