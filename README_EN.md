@@ -155,4 +155,4 @@ withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSErro
 }];
 ```
 
- ![](docs/vn/sample1.png) ![](docs/vn/sample2.png) ![](docs/vn/sample3.png)
+ ![](docs/vn/sample1.png)&nbsp;![](docs/vn/sample2.png)&nbsp;![](docs/vn/sample3.png)
