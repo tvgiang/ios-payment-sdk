@@ -21,96 +21,104 @@ Payment.
 
 **Import Appota.framework into project**
 
-Drag and drop AppotaSDK.framework and AppotaBundle.bundle into your
-project.\
- \
- Tick on checkbox: “Copy items into destination group's folder (if
-needed)”.\
- \
- In Project app’s target settings section, find [Build phases] and open
-Link Binary with Libraries. Click on ‘+’ button and add these
-frameworks:
+Drag and drop AppotaSDK.framework and AppotaBundle.bundle into your project.
 
-    SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework, MessageUI.framework, StoreKit.framework AudioToolbox.framework MobileCoreServices.framework AVFoundation.framework OpenGLES.framework CoreVideo.framework libxml2.dylib CoreMedia.framework AdSupport.framework libsqlite3.dylib
+Tick on checkbox: “Copy items into destination group's folder (if needed)”.
+ 
+In Project app’s target settings section, find [Build phases] and open
+Link Binary with Libraries. Click on ‘+’ button and add these frameworks:
 
-![](step1.jpg)
+```
+SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework,
+MessageUI.framework, StoreKit.framework, AudioToolbox.framework, MobileCoreServices.framework,
+AVFoundation.framework, OpenGLES.framework, CoreVideo.framework, libxml2.dylib, CoreMedia.framework,
+AdSupport.framework, libsqlite3.dylib
+```
 
-In project build settings section, find Other Linker Flags, add two
-values: -ObjC và -all\_load.
+![](docs\vn\step1.jpg)
 
-![](step2.jpg)
+In project build settings section, find Other Linker Flags, add two values: -ObjC và -all\_load.
 
-Import headers into source files:\
- In source file you need to use Appota SDK Library, import:
+![](docs\vn\step2.jpg)
 
-    #import <AppotaSDK/AppotaSDK.h>
+Import headers into source files:
+In source file you need to use Appota SDK Library, import:
 
-**Config plist with CLIENT\_KEY**\
-\
-Add 1 string AppotaClientId with the value is CLIENT\_ID (details about
-CLIENT\_ID are in section of getting ACCESS\_TOKEN)\
- Add more schema: Add 1 string URL Array types. Creat 1 item more with
-URL Schemes is appotaCLIENT\_ID.\
-\
-For example: If CLIENT\_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540,
+``` objective-c
+#import <AppotaSDK/AppotaSDK.h>
+```
+
+**Config plist with CLIENT_KEY**
+
+Add 1 string AppotaClientId with the value is CLIENT_ID (details about
+CLIENT_ID are in section of getting ACCESS_TOKEN)
+Add more schema: Add 1 string URL Array types. Creat 1 item more with
+URL Schemes is appotaCLIENT_ID.
+
+For example: If CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540,
 schemes will be appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
 
-![](step3.jpg)
+![](docs/vn/step3.jpg)
 
 **2. Config SDK**
 
 ** Config AppotaAPI**
 
-Functions of AppotaSDK used via AppotaPayment. You can call
-AppotaPayment via [AppotaPayment shareAPI].\
- \
- Before using SDK to call functions setting up CLIENT\_ID,
-CLIENT\_SECRET, INAPP\_ID (just call only one time):\
- \
- For application in sandbox status:
+Functions of AppotaSDK used via AppotaPayment. You can call AppotaPayment via [AppotaPayment shareAPI].\
 
-AppotaPayment \*appotaPayment = [AppotaPayment shareAPI];\
- appotaPayment.isSandBoxMode = YES;\
- appotaPayment.clientID = SAND\_BOX\_CLIENT\_ID;\
- appotaPayment.clientSecret = SAND\_BOX\_CLIENT\_SECRET;\
- appotaPayment.inappKey = SAND\_BOX\_INAPP\_API\_KEY;\
- appotaPayment.sandboxKey = SAND\_BOX\_KEY;\
+Before using SDK to call functions setting up CLIENT_ID, CLIENT_SECRET, INAPP_ID (just call only one time):
+
+For application in sandbox status:
+
+``` objective-c
+AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.isSandBoxMode = YES;
+appotaPayment.clientID = SAND_BOX_CLIENT_ID;
+appotaPayment.clientSecret = SAND_BOX_CLIENT_SECRET;
+appotaPayment.inappKey = SAND_BOX_INAPP_API_KEY;
+appotaPayment.sandboxKey = SAND_BOX_KEY;
+```
 
 For application in publish status:
 
-    AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
-    appotaPayment.clientID = CLIENT_ID;
-    appotaPayment.clientSecret = CLIENT_SECRET;
-    appotaPayment.inappKey = INAPP_API_KEY;
+``` objective-c
+AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.clientID = CLIENT_ID;
+appotaPayment.clientSecret = CLIENT_SECRET;
+appotaPayment.inappKey = INAPP_API_KEY;
+```
 
-Parameters such as CLIENT\_KEY, CLIENT\_SECRET, INAPP\_API\_KEY,
-SAND\_BOX\_CLIENT\_ID, SAND\_BOX\_CLIENT\_SECRET,
-SAND\_BOX\_INAPP\_API\_KEY, SAND\_BOX\_KEY can be seen on
-[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html)
-(in section of application management).
+Parameters such as CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY,
+SAND_BOX_CLIENT_ID, SAND_BOX_CLIENT_SECRET, SAND_BOX_INAPP_API_KEY, SAND_BOX_KEY can be seen on
+[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html) (in section of application management).
 
 ** Config handleOpenURL**
 
 In AppDelegate of application call function [[Appota shareAPI]
 handleOpenURL:url] as follow:
 
-    - (BOOL)application:(UIApplication *)application
-    openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-    annotation:(id)annotation {     return [[AppotaAPI shareAPI] handleOpenURL:url];
-    }
+``` objective-c
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {     
+    return [[AppotaAPI shareAPI] handleOpenURL:url];
+}
+````
 
 In case that you used another SDK setting handleOpenURL function in
 AppDelegate (for example FacebookSDK), you can call [[AppotaAPI
 shareAPI] handleOpenURL:url] before returning as follow:
 
-    - (BOOL)application:(UIApplication *)application
-    openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-    annotation:(id)annotation {
-       [[AppotaAPI shareAPI] handleOpenURL:url];
+``` objective-c
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {
+    [[AppotaAPI shareAPI] handleOpenURL:url];
     return [self.facebookSDKSession handleOpenURL:url];
-    }
+}
+```
 
 **3. Integrate SDK**
 
@@ -139,9 +147,12 @@ AppotaPayment.h in SDK)
 Dev need to set code to handle results of payment in payment's block,
 for example:
 
-    [appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
-    // Process payment result here
-        [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
-    }];
+``` objective-c
+[appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" 
+withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
+    // Xử lý kết quả của payment ở đây
+    [self handleSMSPaymentResultDict:apiDict withPaymentState:status];
+}];
+```
 
- ![](sample1.png) ![](sample2.png) ![](sample3.png) ![](sample4.png)
+ ![](docs\vn\sample1.png) ![](docs\vn\sample2.png) ![](docs\vn\sample3.png)
