@@ -119,7 +119,7 @@ annotation:(id)annotation {
 
 **3. Tích hợp thanh toán**
 
-Appota Payment SDK cung cấp lớp [AppotaPayment](AppotaPayment.html) đóng
+Appota Payment SDK cung cấp lớp [AppotaPayment](docs/vn/AppotaPayment.md) đóng
 gói toàn bộ giao diện của từng hình thức thanh toán, để tích hợp bất cứ
 hình thức thanh toán nào chỉ cần gọi các hàm tương ứng được cung cấp sẵn
 (tham khảo AppotaPaymentTest).
