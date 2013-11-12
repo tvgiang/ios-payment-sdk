@@ -20,12 +20,12 @@ Apple Payment.
 **Thêm Appota.framework vào project**
 
 Kéo thả thư mục AppotaSDK.framework và file AppotaBundle.bundle vào
-project của bạn.\
- \
- Tick vào checkbox: “Copy items into destination group's folder (if
-needed)”.\
- \
- Trong mục project app’s target settings, tìm mục Build phases và mở
+project của bạn.
+
+Tick vào checkbox: “Copy items into destination group's folder (if
+needed)”.
+ 
+Trong mục project app’s target settings, tìm mục Build phases và mở
 Link Binary with Libraries. Click vào nút ‘+’ và chọn để add các
 framework:
 
@@ -46,17 +46,16 @@ giá trị: -ObjC, -all\_load, -lc++.
 Import headers vào trong source files:\
  Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
 
-    #import <AppotaSDK/AppotaSDK.h>
+```obj_c```
+#import <AppotaSDK/AppotaSDK.h>
+```
 
-**Config plist với CLIENT\_KEY**\
- \
- Thêm 1 trường AppotaClientId với giá trị là CLIENT\_ID (chi tiết về
-CLIENT\_ID xem ở mục lấy ACCESS\_TOKEN).\
- Add thêm schema: Thêm 1 trường URL types kiểu Array. Tạo thêm 1 item
-với URL Schemes là appotaCLIENT\_ID.\
- \
- Ví dụ nếu CLIENT\_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì
-schemes sẽ là appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
+**Config plist với CLIENT_KEY**
+ 
+Thêm 1 trường AppotaClientId với giá trị là CLIENT_ID (chi tiết về CLIENT_ID xem ở mục lấy ACCESS_TOKEN).
+Add thêm schema: Thêm 1 trường URL types kiểu Array. Tạo thêm 1 item với URL Schemes là appotaCLIENT_ID.
+
+Ví dụ nếu CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì schemes sẽ là appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
 
 ![](docs/vn/step3.jpg)
 
