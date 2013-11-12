@@ -1,3 +1,5 @@
+Other languages: [Vietnamese](README.md) | [English](README_EN.md)
+
 **Get Started**
 
 Appota Payment SDK cho iOS là cách đơn giản nhất để tích hợp thanh toán
