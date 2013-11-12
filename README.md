@@ -68,7 +68,7 @@ Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRE
 
 Đối với ứng dụng đang ở trạng thái sandbox:
 
-``` cmake
+``` java
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.isSandBoxMode = YES;
 appotaPayment.clientID = SAND_BOX_CLIENT_ID;
