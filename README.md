@@ -22,12 +22,10 @@ Apple Payment.
 Kéo thả thư mục AppotaSDK.framework và file AppotaBundle.bundle vào
 project của bạn.
 
-Tick vào checkbox: “Copy items into destination group's folder (if
-needed)”.
+Tick vào checkbox: “Copy items into destination group's folder (if needed)”.
  
 Trong mục project app’s target settings, tìm mục Build phases và mở
-Link Binary with Libraries. Click vào nút ‘+’ và chọn để add các
-framework:
+Link Binary with Libraries. Click vào nút ‘+’ và chọn để add các framework:
 
 ```
 SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework,
@@ -38,15 +36,15 @@ AdSupport.framework, libsqlite3.dylib
 
 ![](docs/vn/step1.jpg)
 
-Trong project build settings, tìm đến mục Other Linker Flags, thêm vào 2
-giá trị: -ObjC, -all\_load, -lc++.
+Trong project build settings, tìm đến mục Other Linker Flags, thêm vào 2 giá trị: -ObjC, -all_load, -lc++.
 
 ![](docs/vn/step2.jpg)
 
-Import headers vào trong source files:\
- Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
+Import headers vào trong source files:
 
-```obj_c```
+Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
+
+```obj_c
 #import <AppotaSDK/AppotaSDK.h>
 ```
 
@@ -64,19 +62,20 @@ Ví dụ nếu CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì scheme
 ** Config AppotaAPI**
 
 Các hàm của AppotaSDK được sử dụng qua AppotaPayment. Có thể gọi
-AppotaPayment qua [AppotaPayment shareAPI].\
- \
- Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT\_ID, CLIENT\_SECRET,
-INAPP\_ID (chỉ cần gọi 1 lần duy nhất):\
- \
- Đối với ứng dụng đang ở trạng thái sandbox:\
+AppotaPayment qua [AppotaPayment shareAPI].
 
-    AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
-    appotaPayment.isSandBoxMode = YES;
-    appotaPayment.clientID = SAND_BOX_CLIENT_ID;
-    appotaPayment.clientSecret = SAND_BOX_CLIENT_SECRET;
-    appotaPayment.inappKey = SAND_BOX_INAPP_API_KEY;
-    appotaPayment.sandboxKey = SAND_BOX_KEY;
+Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRET,INAPP_ID (chỉ cần gọi 1 lần duy nhất):
+
+Đối với ứng dụng đang ở trạng thái sandbox:
+
+```obj_c
+AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.isSandBoxMode = YES;
+appotaPayment.clientID = SAND_BOX_CLIENT_ID;
+appotaPayment.clientSecret = SAND_BOX_CLIENT_SECRET;
+appotaPayment.inappKey = SAND_BOX_INAPP_API_KEY;
+appotaPayment.sandboxKey = SAND_BOX_KEY;
+```
 
 Đối với ứng dụng đang ở trạng thái publish:
 
