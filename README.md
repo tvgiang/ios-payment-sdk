@@ -44,7 +44,7 @@ Import headers vào trong source files:
 
 Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
 
-``` java
+``` objective-c
 #import <AppotaSDK/AppotaSDK.h>
 ```
 
@@ -68,7 +68,7 @@ Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRE
 
 Đối với ứng dụng đang ở trạng thái sandbox:
 
-``` java
+``` objective-c
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.isSandBoxMode = YES;
 appotaPayment.clientID = SAND_BOX_CLIENT_ID;
@@ -79,7 +79,7 @@ appotaPayment.sandboxKey = SAND_BOX_KEY;
 
 Đối với ứng dụng đang ở trạng thái publish:
 
-``` java
+``` objective-c
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.clientID = CLIENT_ID;
 appotaPayment.clientSecret = CLIENT_SECRET;
@@ -94,7 +94,7 @@ Các tham số CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY, SAND_BOX_CLIENT_ID, SAN
 Trong AppDelegate của ứng dụng gọi hàm [[Appota shareAPI]
 handleOpenURL:url] như sau:
 
-``` java
+``` objective-c
 - (BOOL)application:(UIApplication *)application
 openURL:(NSURL *)url
 sourceApplication:(NSString *)sourceApplication
@@ -107,6 +107,7 @@ annotation:(id)annotation {
 AppDelegate rồi (ví dụ FacebookSDK) có thể gọi [[AppotaAPI shareAPI]
 handleOpenURL:url] trước khi return như sau:
 
+``` objective-c
     - (BOOL)application:(UIApplication *)application
     openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
@@ -114,6 +115,7 @@ handleOpenURL:url] trước khi return như sau:
        [[AppotaAPI shareAPI] handleOpenURL:url];
     return [self.facebookSDKSession handleOpenURL:url];
     }
+```
 
 **3. Tích hợp thanh toán**
 
