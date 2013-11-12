@@ -35,11 +35,11 @@ AVFoundation.framework, OpenGLES.framework, CoreVideo.framework, libxml2.dylib, 
 AdSupport.framework, libsqlite3.dylib
 ```
 
-![](docs\vn\step1.jpg)
+![](docs/vn/step1.jpg)
 
 In project build settings section, find Other Linker Flags, add two values: -ObjC và -all\_load.
 
-![](docs\vn\step2.jpg)
+![](docs/vn/step2.jpg)
 
 Import headers into source files:
 In source file you need to use Appota SDK Library, import:
@@ -155,4 +155,4 @@ withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSErro
 }];
 ```
 
- ![](docs\vn\sample1.png) ![](docs\vn\sample2.png) ![](docs\vn\sample3.png)
+ ![](docs/vn/sample1.png) ![](docs/vn/sample2.png) ![](docs/vn/sample3.png)
