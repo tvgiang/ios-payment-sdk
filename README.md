@@ -68,7 +68,7 @@ Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRE
 
 Đối với ứng dụng đang ở trạng thái sandbox:
 
-``` java
+``` csharp
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.isSandBoxMode = YES;
 appotaPayment.clientID = SAND_BOX_CLIENT_ID;
@@ -79,10 +79,12 @@ appotaPayment.sandboxKey = SAND_BOX_KEY;
 
 Đối với ứng dụng đang ở trạng thái publish:
 
-    AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
-    appotaPayment.clientID = CLIENT_ID;
-    appotaPayment.clientSecret = CLIENT_SECRET;
-    appotaPayment.inappKey = INAPP_API_KEY;
+``` csharp
+AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
+appotaPayment.clientID = CLIENT_ID;
+appotaPayment.clientSecret = CLIENT_SECRET;
+appotaPayment.inappKey = INAPP_API_KEY;
+```
 
 Các tham số CLIENT\_KEY, CLIENT\_SECRET, INAPP\_API\_KEY,
 SAND\_BOX\_CLIENT\_ID, SAND\_BOX\_CLIENT\_SECRET,
