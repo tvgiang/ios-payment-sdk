@@ -44,7 +44,7 @@ Import headers vào trong source files:
 
 Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
 
-``` cmake
+``` java
 #import <AppotaSDK/AppotaSDK.h>
 ```
 
@@ -68,7 +68,7 @@ Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRE
 
 Đối với ứng dụng đang ở trạng thái sandbox:
 
-``` csharp
+``` java
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.isSandBoxMode = YES;
 appotaPayment.clientID = SAND_BOX_CLIENT_ID;
@@ -79,29 +79,29 @@ appotaPayment.sandboxKey = SAND_BOX_KEY;
 
 Đối với ứng dụng đang ở trạng thái publish:
 
-``` csharp
+``` java
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.clientID = CLIENT_ID;
 appotaPayment.clientSecret = CLIENT_SECRET;
 appotaPayment.inappKey = INAPP_API_KEY;
 ```
 
-Các tham số CLIENT\_KEY, CLIENT\_SECRET, INAPP\_API\_KEY,
-SAND\_BOX\_CLIENT\_ID, SAND\_BOX\_CLIENT\_SECRET,
-SAND\_BOX\_INAPP\_API\_KEY, SAND\_BOX\_KEY có thể xem tại
-[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html)
-trong phần quản lý ứng dụng.
+Các tham số CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY, SAND_BOX_CLIENT_ID, SAND_BOX_CLIENT_SECRET, SAND_BOX_INAPP_API_KEY, SAND_BOX_KEY có thể xem tại
+[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html) trong phần quản lý ứng dụng.
 
 ** Config handleOpenURL**
 
 Trong AppDelegate của ứng dụng gọi hàm [[Appota shareAPI]
 handleOpenURL:url] như sau:
 
-    - (BOOL)application:(UIApplication *)application
-    openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-    annotation:(id)annotation {     return [[AppotaAPI shareAPI] handleOpenURL:url];
-    }
+``` java
+- (BOOL)application:(UIApplication *)application
+openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+annotation:(id)annotation {     
+    return [[AppotaAPI shareAPI] handleOpenURL:url];
+}
+````
 
 Đối với trường hợp bạn đã sử dụng SDK khác có đặt hàm handleOpenURL tại
 AppDelegate rồi (ví dụ FacebookSDK) có thể gọi [[AppotaAPI shareAPI]
