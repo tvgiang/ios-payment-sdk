@@ -122,7 +122,7 @@ annotation:(id)annotation {
 
 **3. Integrate SDK**
 
-Appota Payment SDK provides class [AppotaPayment](AppotaPayment.html)
+Appota Payment SDK provides class [AppotaPayment](docs/en/AppotaPayment.md)
 packaging entire interface of each payment method. To integrate any
 payment methods, you just call respective functions given (refer to
 AppotaPaymentTest).
