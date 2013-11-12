@@ -44,7 +44,7 @@ Import headers vào trong source files:
 
 Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
 
-```obj_c
+```objective-c
 #import <AppotaSDK/AppotaSDK.h>
 ```
 
@@ -68,7 +68,7 @@ Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRE
 
 Đối với ứng dụng đang ở trạng thái sandbox:
 
-```obj_c
+```objective-c
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
 appotaPayment.isSandBoxMode = YES;
 appotaPayment.clientID = SAND_BOX_CLIENT_ID;
