@@ -1,33 +1,3 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta content="en-us" http-equiv="Content-Language" />
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>AppotaPayment</title>
-<style type="text/css">
-.class_title {
-	font-size: x-large;
-}
-.auto-style2 {
-	color: #3298D5;
-}
-.auto-style7 {
-	border-style: none;
-	border-width: medium;
-	color: #0085D5;
-}
-.auto-style8 {
-	font-size: medium;
-}
-</style>
-<link href="../main.css" rel="stylesheet" type="text/css" />
-<link href="../code.css" rel="stylesheet" type="text/css" />
-<script src="../rainbow.min.js"></script>
-</head>
-
-<body>
-
 <p class="class_title"><strong class="class_title">AppotaPayment</strong></p>
 <p>Inherits from: NSObject<br />
 Declared in: <a href="AppotaPaymentHeader.html">AppotaPayment.h</a></p>
@@ -223,10 +193,10 @@ transaction ends.</p>
 </table>
 
 <p>&nbsp;</p>
-<p class="method_detail">(void) <a name="makeSMSPaymentWithAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makeSMSPaymentWithAmount">
 makeSMSPaymentWithAmount</a>:(int) amount withState:(NSString*) state 
 withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using SMS method with a given price.</p>
 <p><strong>Parameters:</strong></p>
 <p>- amount: value of each SMS<br />
@@ -234,11 +204,11 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - target: A seri of customized targets for dev to send to<br />
 - noticeUrl: URL called when transaction ends<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeSMSPaymentWithListAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makeSMSPaymentWithListAmount">
 makeSMSPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
 state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
 withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using SMS method with a list of given prices.</p>
 <p><strong>Parameters:</strong></p>
 <p>- listAmount: A list of SMS value <br />
@@ -247,10 +217,10 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically <br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeSMSPaymentWithState">
+<hr/><strong><p class="method_detail">(void) <a name="makeSMSPaymentWithState">
 makeSMSPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
 withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Get SMS structures from system (for those applications design payment 
 interface themselves, do not use displayed interface of Appota SDK).</p>
 <p><strong>Parameters:</strong></p>
@@ -259,10 +229,10 @@ interface themselves, do not use displayed interface of Appota SDK).</p>
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically <br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makePaypalPaymentWithAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makePaypalPaymentWithAmount">
 makePaypalPaymentWithAmount</a>:(float) amount withState:(NSString*) state 
 withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Paypal method with a given price.</p>
 <p><strong>Parameters:</strong></p>
 <p>- amount: value of each SMS<br />
@@ -270,11 +240,11 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - target: A seri of customized targets for dev to send to<br />
 - noticeUrl: URL called when transaction ends<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makePaypalPaymentWithListAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makePaypalPaymentWithListAmount">
 makePaypalPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
 state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
 withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Paypal method with a list of given prices.</p>
 <p><strong>Parameters:</strong></p>
 <p>- listAmount: List of value to charge<br />
@@ -283,10 +253,10 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makePaypalPaymentWithState">
+<hr/><strong><p class="method_detail">(void) <a name="makePaypalPaymentWithState">
 makePaypalPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
 withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Paypal method that allows user to add the 
 amount of money.</p>
 <p><strong>Parameters:</strong></p>
@@ -295,11 +265,11 @@ amount of money.</p>
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeCardPaymentWithCardCode">
+<hr/><strong><p class="method_detail">(void) <a name="makeCardPaymentWithCardCode">
 makeCardPaymentWithCardCode</a>:(NSString *)cardCode withCardSerial:(NSString 
 *)cardSerial withCardVendor:(NSString *)cardVendor withState:(NSString*) state 
 withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Payment by direct Card (for those applications design payment interface 
 themselves, do not use displayed interface of Appota SDK).</p>
 <p><strong>Parameters:</strong></p>
@@ -319,10 +289,10 @@ Card<br />
 - target: A seri of customized targets for dev to send to<br />
 - noticeUrl: URL called when transaction ends<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeCardPaymentWithState">
+<hr/><strong><p class="method_detail">(void) <a name="makeCardPaymentWithState">
 makeCardPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
 withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Card method.</p>
 <p><strong>Parameters:</strong></p>
 <p>- state: A seri of customized states for dev to send to<br />
@@ -330,10 +300,10 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeBankPaymentWithAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makeBankPaymentWithAmount">
 makeBankPaymentWithAmount</a>:(float) amount withState:(NSString*) state 
 withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Internet Banking with a given price.</p>
 <p><strong>Parameters:</strong></p>
 <p>- amount: Value to charge<br />
@@ -341,11 +311,11 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - target: A seri of customized targets for dev to send to<br />
 - noticeUrl: URL called when transaction ends<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeBankPaymentWithListAmount">
+<hr/><strong><p class="method_detail">(void) <a name="makeBankPaymentWithListAmount">
 makeBankPaymentWithListAmount</a>:(NSArray*) listAmount withState:(NSString*) 
 state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
 withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Internet Banking with a list of given prices.</p>
 <p><strong>Parameters:</strong></p>
 <p>- listAmount: A list of value to charge<br />
@@ -354,10 +324,10 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeBankPaymentWithState">
+<hr/><strong><p class="method_detail">(void) <a name="makeBankPaymentWithState">
 makeBankPaymentWithState</a>:(NSString*) state withTarget:(NSString*) target 
 withNoticeUrl:(NSString*) noticeUrl withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Internet Banking that allows users to add the 
 amount of money.</p>
 <p><strong>Parameters:</strong></p>
@@ -366,11 +336,11 @@ amount of money.</p>
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeApplePaymentWithItem">
+<hr/><strong><p class="method_detail">(void) <a name="makeApplePaymentWithItem">
 makeApplePaymentWithItem</a>:(AppotaAppleIAPItem*) item withState:(NSString*) 
 state withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
 withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Apple Payment method with a given IAP item.</p>
 <p><strong>Parameters:</strong></p>
 <p>- items: IAP Item<br />
@@ -379,11 +349,11 @@ withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>)
 - noticeUrl: URL called when transaction ends<br />
 - description: Decribe payment specifically<br />
 - handler: Handler called when constructing transaction ends</p>
-<p class="method_detail">(void) <a name="makeApplePaymentWithListItem">
+<hr/><strong><p class="method_detail">(void) <a name="makeApplePaymentWithListItem">
 makeApplePaymentWithListItem</a>:(NSArray*) lisItem withState:(NSString*) state 
 withTarget:(NSString*) target withNoticeUrl:(NSString*) noticeUrl 
 withDescription:(NSString*) description 
-withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p>
+withCompletionHandler:(<a href="#AppotaPaymentHandler">AppotaPaymentHandler</a>) handler</p></strong>
 <p>Display payment interface using Apple Payment method with a list of given IAP 
 items.</p>
 <p><strong>Parameters:</strong></p>

@@ -49,7 +49,7 @@ typedef enum {
 } AppotaPaymentState;
 
 /*
- * Event handler cho kết quả trả về của Appota API
+ * Event handler give returned result of Appota API
  */
 typedef void(^AppotaPaymentHandler)(NSDictionary *apiDict, AppotaPaymentState status, NSError *error);
 
@@ -63,7 +63,7 @@ typedef void(^AppotaPaymentHandler)(NSDictionary *apiDict, AppotaPaymentState st
 #pragma mark -
 #pragma mark - Shared Appota API
 /*
- * AppotaAPI singleton các API sẽ được gọi theo format [[AppotaAPI shareAPI] api];
+ * AppotaAPI singleton APIs will be called with format [[AppotaAPI shareAPI] api];
  */
 +(AppotaPayment *)shareAPI;
 

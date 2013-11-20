@@ -1,4 +1,4 @@
-Other languages: [English](README_EN.md) | [Chinese](README_CN.md)
+Other languages: [Vietnamese](README.md) | [English](README_EN.md)
 
 **Get Started**
 
