@@ -260,7 +260,7 @@
  *  The default implementation freezes the queued operations and stops network activity
  *  You normally don't have to implement this unless you need to show a HUD notifying the user of connectivity loss
  */
-@property (copy, nonatomic) void (^reachabilityChangedHandler)(AdsNetworkStatus ns);
+@property (copy, nonatomic) void (^reachabilityChangedHandler)(PaymentSDKNetworkStatus ns);
 
 /*!
  *  @abstract Registers an associated operation subclass

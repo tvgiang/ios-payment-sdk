@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <AppotaSDK/AppotaSDK.h>
+#import <AppotaAdsSDK/AppotaAdsSDK.h>
 #import "AppDelegate.h"
 
 @interface ViewController ()

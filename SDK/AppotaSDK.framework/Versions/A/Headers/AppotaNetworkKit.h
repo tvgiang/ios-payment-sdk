@@ -70,7 +70,7 @@
 #import <AppotaSDK/NSAlert+AppotaNetworkKitAdditions.h>
 #endif
 
-#import <AppotaSDK/AdsReachability.h>
+#import <AppotaSDK/PaymentSDKReachability.h>
 
 #import <AppotaSDK/AppotaNetworkOperation.h>
 #import <AppotaSDK/AppotaNetworkEngine.h>
