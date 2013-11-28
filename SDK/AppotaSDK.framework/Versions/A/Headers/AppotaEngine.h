@@ -10,7 +10,7 @@
 // Class AppotaEngine bao gồm các function được gọi trong AppotaAPI và kết nối với Appota
 //  ***Lưu ý tất cả các API phải được gọi qua class AppotaAPI***
 // Chi tiết các API xem ở class AppotaAPI 
-#import "AppotaNetworkEngine.h"
+#import "AppotaPaymentSDKNetworkEngine.h"
 #import "AppotaPayment.h"
 
 @class AppotaEngine;
@@ -19,7 +19,7 @@ typedef void (^FetcherArrayBlock)(NSMutableArray *list);
 typedef void (^FetcherDictionary)(NSDictionary *dict);
 typedef void (^BOOLBlock)(BOOL b);
 
-@interface AppotaEngine : AppotaNetworkEngine
+@interface AppotaEngine : AppotaPaymentSDKNetworkEngine
 {
 
 }

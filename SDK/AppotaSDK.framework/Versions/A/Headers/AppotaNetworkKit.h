@@ -72,8 +72,8 @@
 
 #import <AppotaSDK/PaymentSDKReachability.h>
 
-#import <AppotaSDK/AppotaNetworkOperation.h>
-#import <AppotaSDK/AppotaNetworkEngine.h>
+#import <AppotaSDK/AppotaPaymentSDKNetworkOperation.h>
+#import <AppotaSDK/AppotaPaymentSDKNetworkEngine.h>
 
 #define kAppotaNetworkEngineOperationCountChanged @"kAppotaNetworkEngineOperationCountChanged"
 #define AppotaNetworkCACHE_DEFAULT_COST 10
