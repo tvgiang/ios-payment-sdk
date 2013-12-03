@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MessageUI/MessageUI.h>
-#import "Language.h"
+#import "AppotaPaymentSDKLanguage.h"
 #import "AppotaProgressView.h"
 #import "AppotaAppleIAPItem.h"
 // up-front decl's

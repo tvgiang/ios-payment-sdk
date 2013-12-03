@@ -44,5 +44,6 @@
 #define TOP_UP_LIST_ITEMS_WEB @"https://pay.appota.com/items?action=listitem&access_token="
 #define TOP_UP_BUY_ITEMS_WEB @"https://pay.appota.com/items?action=buyitem&access_token="
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #endif

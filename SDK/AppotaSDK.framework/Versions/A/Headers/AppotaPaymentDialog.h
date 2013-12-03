@@ -13,6 +13,7 @@
 @class AppotaPaymentDialogView;
 @class AppotaPaymentController;
 @interface AppotaPaymentDialog : AppotaDialog <PayPalPaymentDelegate> {
+    UIViewController *smsOS5ContentViewController;
     PayPalPaymentViewController *pppViewController;
     AppotaPaymentDialogView *appotaPaymentView;
     NSMutableArray *listPaymentController;
@@ -29,6 +30,9 @@
     BOOL enableDialog;
 }
 @property(nonatomic, strong, readwrite) PayPalPayment *completedPaypalPayment;
+
+- (UIViewController*) getSMSOS5ContentViewController;
+
 
 - (void) showSMSPaymentDialogWithAmount:(int) amount
                             withSMSDict:(NSDictionary*) smsDict
