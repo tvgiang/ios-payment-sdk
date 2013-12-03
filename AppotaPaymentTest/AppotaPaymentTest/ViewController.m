@@ -86,11 +86,10 @@
     [appotaPayment makeApplePaymentWithListItem:[NSArray arrayWithObjects:iapItem, iapItem2, nil] withState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         [AppotaProgressView hideAllHUDsForView:self.view animated:YES];
         if (status == AppotaPaymentSucceed && [[apiDict objectForKey:@"status"] intValue] == 1) {
-            [AppotaUtil alertWithTitle:@"" withMessage:[NSString stringWithFormat:@"%@ %@",[Language get:@"Mua"], [[apiDict objectForKey:@"data"] objectForKey:@"product_id"]]];
         }
         else {
             if (status != AppotaPaymentClosed) {
-                [AppotaUtil alertWithTitle:@"" withMessage:[Language get:@"Giao dịch thất bại"]];                
+                [AppotaUtil alertWithTitle:@"" withMessage:[AppotaPaymentSDKLanguage get:@"Giao dịch thất bại"]];                
             }
         }
     }];
@@ -109,10 +108,10 @@
     [appotaPayment makeApplePaymentWithItem:iapItem withState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         [AppotaProgressView hideAllHUDsForView:self.view animated:YES];
         if (status == AppotaPaymentSucceed && [[apiDict objectForKey:@"status"] intValue] == 1) {
-            [AppotaUtil alertWithTitle:@"" withMessage:[NSString stringWithFormat:@"%@ %@",[Language get:@"Mua"], [[apiDict objectForKey:@"data"] objectForKey:@"product_id"]]];
+            [AppotaUtil alertWithTitle:@"" withMessage:[NSString stringWithFormat:@"%@ %@",[AppotaPaymentSDKLanguage get:@"Mua"], [[apiDict objectForKey:@"data"] objectForKey:@"product_id"]]];
         }
         else {
-            [AppotaUtil alertWithTitle:@"" withMessage:[Language get:@"Giao dịch thất bại"]];
+            [AppotaUtil alertWithTitle:@"" withMessage:[AppotaPaymentSDKLanguage get:@"Giao dịch thất bại"]];
         }
     }];
 }
@@ -122,12 +121,12 @@
     appotaPayment.debugMode = YES;
     [appotaPayment makeBankPaymentWithListAmount:[NSArray arrayWithObjects:[NSNumber numberWithFloat:1000.0f], [NSNumber numberWithFloat:2000.0f], [NSNumber numberWithFloat:5000.0f], [NSNumber numberWithFloat:10000.0f], [NSNumber numberWithFloat:20000.0f], [NSNumber numberWithFloat:40000.0f], nil] withState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if(status == AppotaPaymentInvalidAmount) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         if (status == AppotaPaymentSucceed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
@@ -141,11 +140,11 @@
     [appotaPayment makeBankPaymentWithAmount:20000 withState:@"" withTarget:@"" withNoticeUrl:@"" withDesciption:@"$1 for 100 coin\n$2 for 1000 coin"  withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if (status == AppotaPaymentSucceed) {
             if(status == AppotaPaymentInvalidAmount) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
@@ -157,12 +156,12 @@
     appotaPayment.debugMode = YES;
     [appotaPayment makeBankPaymentWithState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if(status == AppotaPaymentInvalidAmount) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         if (status == AppotaPaymentSucceed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
@@ -174,12 +173,12 @@
     appotaPayment.debugMode = YES;
     [appotaPayment makePaypalPaymentWithState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if(status == AppotaPaymentInvalidAmount) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         if (status == AppotaPaymentSucceed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
@@ -191,12 +190,12 @@
     appotaPayment.debugMode = YES;
     [appotaPayment makePaypalPaymentWithListAmount:[NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f], [NSNumber numberWithFloat:2.0f], [NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:10.0f], [NSNumber numberWithFloat:20.0f], [NSNumber numberWithFloat:40.0f], nil] withState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if(status == AppotaPaymentInvalidAmount) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         if (status == AppotaPaymentSucceed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }        
@@ -208,12 +207,12 @@
     appotaPayment.debugMode = YES;    
     [appotaPayment makePaypalPaymentWithAmount:1.0f withState:@"" withTarget:@"" withNoticeUrl:@"" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if(status == AppotaPaymentInvalidAmount) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nhập số tiền phù hợp"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         if (status == AppotaPaymentSucceed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                        message:[Language get:@"Nạp tiền thành công."]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                        message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
@@ -228,7 +227,7 @@
                             withDescription:@"Vinaphone - 50k\nViettel - 70 k"
                       withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {
         if (status == AppotaPaymentSucceed) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[Language get:@"Nạp tiền thành công."] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
         else if(status != AppotaPaymentClosed){
@@ -241,20 +240,20 @@
 - (void) handleSMSPaymentResultDict:(NSDictionary*) resultDict
                    withPaymentState:(AppotaPaymentState) paymentState {
     if (paymentState == AppotaPaymentSucceed) {
-        [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
-                                    message:[Language get:@"Nạp tiền thành công."]
+        [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
+                                    message:[AppotaPaymentSDKLanguage get:@"Nạp tiền thành công."]
                                    delegate:nil
                           cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
     else {
         if (paymentState == AppotaPaymentSMSPending) {
             [[[UIAlertView alloc] initWithTitle:@""
-                                        message:[Language get:@"Đang xác nhận giao dịch, vui lòng chờ."]
+                                        message:[AppotaPaymentSDKLanguage get:@"Đang xác nhận giao dịch, vui lòng chờ."]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         }
         if (paymentState == AppotaPaymentFailed) {
-            [[[UIAlertView alloc] initWithTitle:[Language get:@"Thông báo"]
+            [[[UIAlertView alloc] initWithTitle:[AppotaPaymentSDKLanguage get:@"Thông báo"]
                                         message:[resultDict objectForKey:@"message"]
                                        delegate:nil
                               cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];            

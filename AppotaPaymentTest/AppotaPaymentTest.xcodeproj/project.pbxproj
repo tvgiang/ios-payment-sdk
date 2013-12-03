@@ -55,7 +55,7 @@
 		36C04EDB18224ECC0059E79A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		36C04EDD18224ECC0059E79A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		36C04EDF18224ECC0059E79A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		36C04EE018224ECC0059E79A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		36C04EE018224ECC0059E79A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		36C04EE318224ECC0059E79A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		36C04EEA182251F50059E79A /* AppotaBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppotaBundle.bundle; sourceTree = "<group>"; };
 		36C04EEB182251F50059E79A /* AppotaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppotaSDK.framework; sourceTree = "<group>"; };
