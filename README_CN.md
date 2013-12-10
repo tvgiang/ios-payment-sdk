@@ -1,33 +1,34 @@
+[Chinese version is coming soon]
+
 Other languages: [Vietnamese](README.md) | [English](README_EN.md)
 
 **Get Started**
 
-Appota Payment SDK cho iOS là cách đơn giản nhất để tích hợp thanh toán
-cho ứng dụng của bạn trên hệ thống Appota. SDK này cung cấp giải pháp
-cho các hình thức thanh toán: SMS, thẻ cào, internet banking, Paypal và
-Apple Payment.
+Appota Payment SDK for iOS is the simplest way to integrate payment for
+your application on Appota system. This SDK provides solutions for
+payment methods such as: SMS, Card, Internet Banking, Paypal and Apple
+Payment.
 
-**Các bước tích hợp SDK:**
+**Steps to integrate SDK:**
 
-​1. Cài đặt Appota SDK
+​1. Setup Appota SDK
 
-​2. Cấu hình SDK
+​2. Config SDK
 
-​3. Tích hợp
+​3. Integrate SDK
 
  
 
-**1. Cài đặt Appota SDK**
+**1. Setup Appota SDK**
 
-**Thêm Appota.framework vào project**
+**Import Appota.framework into project**
 
-Kéo thả thư mục AppotaSDK.framework và file AppotaBundle.bundle vào
-project của bạn.
+Drag and drop AppotaSDK.framework and AppotaBundle.bundle into your project.
 
-Tick vào checkbox: “Copy items into destination group's folder (if needed)”.
+Tick on checkbox: “Copy items into destination group's folder (if needed)”.
  
-Trong mục project app’s target settings, tìm mục Build phases và mở
-Link Binary with Libraries. Click vào nút ‘+’ và chọn để add các framework:
+In Project app’s target settings section, find [Build phases] and open
+Link Binary with Libraries. Click on ‘+’ button and add these frameworks:
 
 ```
 SystemConfiguration.framework, Security.framework, CFNetwork.framework, QuaztCore.framework,
@@ -38,37 +39,38 @@ AdSupport.framework, libsqlite3.dylib
 
 ![](docs/vn/step1.jpg)
 
-Trong project build settings, tìm đến mục Other Linker Flags, thêm vào 2 giá trị: -ObjC, -all_load, -lc++.
+In project build settings section, find Other Linker Flags, add two values: -ObjC và -all\_load.
 
 ![](docs/vn/step2.jpg)
 
-Import headers vào trong source files:
-
-Trong source file mà bạn cần sử dụng thư viện Appota SDK, import:
+Import headers into source files:
+In source file you need to use Appota SDK Library, import:
 
 ``` objective-c
 #import <AppotaSDK/AppotaSDK.h>
 ```
 
-**Config plist với CLIENT_KEY**
- 
-Thêm 1 trường AppotaClientId với giá trị là CLIENT_ID (chi tiết về CLIENT_ID xem ở mục lấy ACCESS_TOKEN).
-Add thêm schema: Thêm 1 trường URL types kiểu Array. Tạo thêm 1 item với URL Schemes là appotaCLIENT_ID.
+**Config plist with CLIENT_KEY**
 
-Ví dụ nếu CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540 thì schemes sẽ là appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
+Add 1 string AppotaClientId with the value is CLIENT_ID (details about
+CLIENT_ID are in section of getting ACCESS_TOKEN)
+Add more schema: Add 1 string URL Array types. Creat 1 item more with
+URL Schemes is appotaCLIENT_ID.
+
+For example: If CLIENT_ID = b804d6421df6ae7dbcd51469e4d8ee0005101f540,
+schemes will be appotab804d6421df6ae7dbcd51469e4d8ee0005101f540.
 
 ![](docs/vn/step3.jpg)
 
-**2. Cấu hình SDK**
+**2. Config SDK**
 
 ** Config AppotaAPI**
 
-Các hàm của AppotaSDK được sử dụng qua AppotaPayment. Có thể gọi
-AppotaPayment qua [AppotaPayment shareAPI].
+Functions of AppotaSDK used via AppotaPayment. You can call AppotaPayment via [AppotaPayment shareAPI].\
 
-Trước khi sử dụng SDK gọi các hàm cài đặt CLIENT_ID, CLIENT_SECRET,INAPP_ID (chỉ cần gọi 1 lần duy nhất):
+Before using SDK to call functions setting up CLIENT_ID, CLIENT_SECRET, INAPP_ID (just call only one time):
 
-Đối với ứng dụng đang ở trạng thái sandbox:
+For application in sandbox status:
 
 ``` objective-c
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
@@ -79,7 +81,7 @@ appotaPayment.inappKey = SAND_BOX_INAPP_API_KEY;
 appotaPayment.sandboxKey = SAND_BOX_KEY;
 ```
 
-Đối với ứng dụng đang ở trạng thái publish:
+For application in publish status:
 
 ``` objective-c
 AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
@@ -88,13 +90,14 @@ appotaPayment.clientSecret = CLIENT_SECRET;
 appotaPayment.inappKey = INAPP_API_KEY;
 ```
 
-Các tham số CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY, SAND_BOX_CLIENT_ID, SAND_BOX_CLIENT_SECRET, SAND_BOX_INAPP_API_KEY, SAND_BOX_KEY có thể xem tại
-[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html) trong phần quản lý ứng dụng.
+Parameters such as CLIENT_KEY, CLIENT_SECRET, INAPP_API_KEY,
+SAND_BOX_CLIENT_ID, SAND_BOX_CLIENT_SECRET, SAND_BOX_INAPP_API_KEY, SAND_BOX_KEY can be seen on
+[https://developer.appota.com/manage-content.html](https://developer.appota.com/manage-content.html) (in section of application management).
 
 ** Config handleOpenURL**
 
-Trong AppDelegate của ứng dụng gọi hàm [[Appota shareAPI]
-handleOpenURL:url] như sau:
+In AppDelegate of application call function [[Appota shareAPI]
+handleOpenURL:url] as follow:
 
 ``` objective-c
 - (BOOL)application:(UIApplication *)application
@@ -105,9 +108,9 @@ annotation:(id)annotation {
 }
 ````
 
-Đối với trường hợp bạn đã sử dụng SDK khác có đặt hàm handleOpenURL tại
-AppDelegate rồi (ví dụ FacebookSDK) có thể gọi [[AppotaAPI shareAPI]
-handleOpenURL:url] trước khi return như sau:
+In case that you used another SDK setting handleOpenURL function in
+AppDelegate (for example FacebookSDK), you can call [[AppotaAPI
+shareAPI] handleOpenURL:url] before returning as follow:
 
 ``` objective-c
 - (BOOL)application:(UIApplication *)application
@@ -119,31 +122,32 @@ annotation:(id)annotation {
 }
 ```
 
-**3. Tích hợp thanh toán**
+**3. Integrate SDK**
 
-Appota Payment SDK cung cấp lớp [AppotaPayment](docs/vn/AppotaPayment.md) đóng
-gói toàn bộ giao diện của từng hình thức thanh toán, để tích hợp bất cứ
-hình thức thanh toán nào chỉ cần gọi các hàm tương ứng được cung cấp sẵn
-(tham khảo AppotaPaymentTest).
+Appota Payment SDK provides class [AppotaPayment](docs/en/AppotaPayment.md)
+packaging entire interface of each payment method. To integrate any
+payment methods, you just call respective functions given (refer to
+AppotaPaymentTest).
 
-**4 - Chạy SDK Samples**
+**4 - Run SDK Samples**
 
-- Yêu cầu: Xcode 4.6, iOS SDK 6 trở lên.
+- Requirement: Xcode 4.6, iOS SDK 6 or more.
 
-- Mở AppotaPaymentTest.xcodeproj để chạy sample.
+- Open AppotaPaymentTest.xcodeproj to run sample.
 
-- Sử dụng SDK trong example:
+- Use SDK in example:
 
-Tất cả các API của SDK đều được gọi qua 1 hàm, ví dụ: makeSMSPaymentWithAmount
+All APIs of SDK are called via 1 function, for example:\
+ makeSMSPaymentWithAmount
 
-Kết quả trả về trong block của hàm qua Appota AppotaPaymentHandler (tham
-khảo AppotaPayment.h trong SDK). Giá trị của kết quả có thể xác định qua
-giá trị của NSDictionary, AppotaPaymentState và NSError trả về qua
-AppotaPaymentHandler. (Các state của AppotaPaymentState tham khảo
-AppotaPayment.h trong SDK)
+Results returned in block of function via AppotaPaymentHandler (refer to
+AppotaPayment.h in SDK). Value of result can be identified via value of
+NSDictionary, AppotaPaymentState and NSError are returned via
+AppotaPaymentHandler. (States of AppotaPaymentState are referred to 
+AppotaPayment.h in SDK)
 
-Dev cần đặt code xử lý kết quả của payment trong block của payment API
-ví dụ:
+Dev need to set code to handle results of payment in payment's block,
+for example:
 
 ``` objective-c
 [appotaPayment makeSMSPaymentWithAmount:500 withState:@"" withTarget:@"" withNoticeUrl:@"" 
@@ -153,4 +157,4 @@ withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSErro
 }];
 ```
 
- ![](docs/vn/sample1.png)&nbsp;![](docs/vn/sample2.png)&nbsp;![](docs/vn/sample3.png)&nbsp;
+ ![](docs/vn/sample1.png)&nbsp;![](docs/vn/sample2.png)&nbsp;![](docs/vn/sample3.png)
