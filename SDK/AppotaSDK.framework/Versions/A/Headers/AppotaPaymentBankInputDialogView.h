@@ -11,6 +11,7 @@
 
 @interface AppotaPaymentBankInputDialogView : AppotaPaymentBankDialogView <UITextFieldDelegate>{
     
+    __unsafe_unretained IBOutlet UIImageView *inputValueImageView;
     __unsafe_unretained IBOutlet UITextField *inputValueTextField;
     __unsafe_unretained IBOutlet UIButton *currencyBtn;
 }

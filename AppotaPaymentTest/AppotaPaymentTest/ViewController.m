@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import <AppotaSDK/AppotaSDK.h>
-#import <AppotaAdsSDK/AppotaAdsSDK.h>
 #import "AppDelegate.h"
 
 @interface ViewController ()
@@ -80,7 +79,6 @@
     // com.testsdknofb.muanhieulan1
     AppotaAppleIAPItem *iapItem = [[AppotaAppleIAPItem alloc] initWithProductID:@"com.testsdknofb.muamotlan1" withPrice:0.99f withDescription:@"Mua nhieu lan $1"];
     AppotaAppleIAPItem *iapItem2 = [[AppotaAppleIAPItem alloc] initWithProductID:@"com.testsdknofb.muanhieulan1" withPrice:0.99f withDescription:@"Mua nhieu lan $1"];
-    
     
     AppotaPayment *appotaPayment = [AppotaPayment shareAPI];
     [appotaPayment makeApplePaymentWithListItem:[NSArray arrayWithObjects:iapItem, iapItem2, nil] withState:@"" withTarget:@"" withNoticeUrl:@"" withDescription:@"$1 for 100 coin\n$2 for 1000 coin" withCompletionHandler:^(NSDictionary *apiDict, AppotaPaymentState status, NSError *error) {

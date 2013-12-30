@@ -21,11 +21,14 @@
     
     __unsafe_unretained IBOutlet UIButton *dropInForButton;
     UIButton *chooseLangButton;
+    __unsafe_unretained IBOutlet UIScrollView *landscapeContentScrollView;
 }
-
+- (void) adjustLandscapeIphone4WithListView:(NSArray*) listMoveView;
 - (void) addChooseLanguageButton;
+- (void) adjustPaymentDetail;
 - (IBAction)showPaymentDetailDescription:(id)sender;
 - (void) setUpViewWithTitle:(NSString*) title
             withDescription:(NSString*) description
           withPaymentDialog:(AppotaPaymentDialog*) paymentDialog;
+- (void) setUpLandscapeXibWithHeight:(float) height;
 @end

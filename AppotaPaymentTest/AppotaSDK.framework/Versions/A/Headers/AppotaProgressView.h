@@ -30,7 +30,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@protocol MBProgressHUDDelegate;
+@protocol AppotaPaymentSDKMBProgressHUDDelegate;
 
 
 typedef enum {
@@ -299,9 +299,9 @@ typedef void (^MBProgressHUDCompletionBlock)();
 /** 
  * The HUD delegate object. 
  *
- * @see MBProgressHUDDelegate
+ * @see AppotaPaymentSDKMBProgressHUDDelegate
  */
-@property (MB_WEAK) id<MBProgressHUDDelegate> delegate;
+@property (MB_WEAK) id<AppotaPaymentSDKMBProgressHUDDelegate> delegate;
 
 /** 
  * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
@@ -427,7 +427,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
 @end
 
 
-@protocol MBProgressHUDDelegate <NSObject>
+@protocol AppotaPaymentSDKMBProgressHUDDelegate <NSObject>
 
 @optional
 
@@ -472,7 +472,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
 /**
  * A flat bar progress view. 
  */
-@interface MBBarProgressView : UIView
+@interface AppotaPaymentSDKMBBarProgressView : UIView
 
 /**
  * Progress (0.0 to 1.0)

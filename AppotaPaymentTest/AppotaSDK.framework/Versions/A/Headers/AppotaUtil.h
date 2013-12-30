@@ -27,4 +27,16 @@
 + (NSArray*) getArrayOfDescriptionFromString:(NSString*) descriptionString;
 
 + (void) setLanguageForView:(UIView*) v;
+
++ (void) moveViewWithX:(float) xChange
+              withView:(UIView*) view;
++ (BOOL) AppotaIsDeviceIPad;
++ (BOOL) isIphone4;
++ (BOOL) isLandscape;
++ (UIView*) findMatchSuperViewWithSender:(id) sender
+                           withSuperView:(Class) viewClass;
++ (void) saveAndResetStatusBarState;
++ (BOOL) getStatusBarState;
++ (void) showStatusBar;
++ (void) hideStatusBar;
 @end
