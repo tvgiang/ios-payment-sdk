@@ -39,4 +39,5 @@
 + (BOOL) getStatusBarState;
 + (void) showStatusBar;
 + (void) hideStatusBar;
++ (CGAffineTransform)transformForOrientation;
 @end
