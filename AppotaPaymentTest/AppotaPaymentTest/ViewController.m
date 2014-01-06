@@ -22,7 +22,7 @@
     appotaAPI.clientID = CLIENT_ID;
     appotaAPI.clientSecret = CLIENT_SECRET;
     appotaAPI.inappKey = INAPP_API_KEY;
-    
+    appotaAPI.debugMode = YES;
     // Config for sandbox app
     // For sandbox app comment above code and uncomment this part
     //    appotaAPI.clientID = SANDBOX_CLIENT_ID;
