@@ -13,10 +13,12 @@
 #import "AppotaPaymentSDKLanguage.h"
 #import "AppotaProgressView.h"
 #import "AppotaAppleIAPItem.h"
+
 // up-front decl's
 @class AppotaPayment;
 @class AppotaEngine;
 @class AppotaAppleIAPItem;
+@class AppotaPaymentDialog;
 /*
  * State cho AppotaApi handler
  */
@@ -58,6 +60,7 @@ typedef void(^AppotaResultHandler)(NSDictionary *apiDict, AppotaApiState status,
  */
 @interface AppotaPayment : NSObject {
     NSString *inappId;
+    AppotaPaymentDialog *smsPaymentDialog;
 }
 
 @property BOOL isSandBoxMode;

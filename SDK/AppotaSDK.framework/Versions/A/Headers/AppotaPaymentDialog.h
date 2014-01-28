@@ -15,6 +15,8 @@
 @interface AppotaPaymentDialog : AppotaDialog <PayPalPaymentDelegate> {
     UIViewController *smsOS5ContentViewController;
     PayPalPaymentViewController *pppViewController;
+    AppotaPaymentController *pCL;
+    
     AppotaPaymentDialogView *appotaPaymentView;
     NSMutableArray *listPaymentController;
     MFMessageComposeViewController *smsViewController;
