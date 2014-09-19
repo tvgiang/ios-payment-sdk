@@ -8,13 +8,11 @@
 
 #import <AppotaSDK/AppotaSDK.h>
 #import <MessageUI/MessageUI.h>
-#import "PayPalMobile.h"
 
 @class AppotaPaymentDialogView;
 @class AppotaPaymentController;
-@interface AppotaPaymentDialog : AppotaDialog <PayPalPaymentDelegate> {
+@interface AppotaPaymentDialog : AppotaDialog {
     UIViewController *smsOS5ContentViewController;
-    PayPalPaymentViewController *pppViewController;
     AppotaPaymentController *pCL;
     
     AppotaPaymentDialogView *appotaPaymentView;
@@ -29,9 +27,8 @@
     NSString *paymentDescription;
     NSArray *paymentListOption;
     NSString *paymentInAppID;
-    BOOL enableDialog;
+//    BOOL enableDialog;
 }
-@property(nonatomic, strong, readwrite) PayPalPayment *completedPaypalPayment;
 
 - (UIViewController*) getSMSOS5ContentViewController;
 
@@ -55,27 +52,27 @@
 - (void) showCardPaymentDialogWithDescription:(NSString*) descriptionString
                                   withHandler:(AppotaPaymentHandler) handler;
 
-- (void) showPaypalPaymentDialogWithInputWithState:(NSString *)state
-                                        withTarget:(NSString *)target
-                                     withNoticeUrl:(NSString *)noticeUrl withDescriptionString:(NSString *)descriptionString withHandler:(AppotaPaymentHandler)handler;
-
-
-- (void) showPaypalPaymentDialogWithAmount:(float) amount
-                                  withState:(NSString*) state
-                                 withTarget:(NSString*) target
-                              withNoticeUrl:(NSString*) noticeUrl
-                              enableDialog:(BOOL) enableDialog
-                                withHandler:(AppotaPaymentHandler) handler;
-- (void) showPaypalPaymentDialogWithListAmount:(NSArray*) listAmount
-                         withDescriptionString:(NSString*) descriptionString
-                                   withHandler:(AppotaPaymentHandler)handler;
-
-- (void) showPaypalPaymentDialogWithListAmount:(NSArray*) listAmount
-                                     withState:(NSString*) state
-                                    withTarget:(NSString*) target
-                                 withNoticeUrl:(NSString*) noticeUrl
-                         withDescriptionString:(NSString*) descriptionString
-                                   withHandler:(AppotaPaymentHandler)handler;
+//- (void) showPaypalPaymentDialogWithInputWithState:(NSString *)state
+//                                        withTarget:(NSString *)target
+//                                     withNoticeUrl:(NSString *)noticeUrl withDescriptionString:(NSString *)descriptionString withHandler:(AppotaPaymentHandler)handler;
+//
+//
+//- (void) showPaypalPaymentDialogWithAmount:(float) amount
+//                                  withState:(NSString*) state
+//                                 withTarget:(NSString*) target
+//                              withNoticeUrl:(NSString*) noticeUrl
+//                              enableDialog:(BOOL) enableDialog
+//                                withHandler:(AppotaPaymentHandler) handler;
+//- (void) showPaypalPaymentDialogWithListAmount:(NSArray*) listAmount
+//                         withDescriptionString:(NSString*) descriptionString
+//                                   withHandler:(AppotaPaymentHandler)handler;
+//
+//- (void) showPaypalPaymentDialogWithListAmount:(NSArray*) listAmount
+//                                     withState:(NSString*) state
+//                                    withTarget:(NSString*) target
+//                                 withNoticeUrl:(NSString*) noticeUrl
+//                         withDescriptionString:(NSString*) descriptionString
+//                                   withHandler:(AppotaPaymentHandler)handler;
 
 - (void) showBankPaymentDialogWithListAmount:(NSArray*) listAmount
                                    withState:(NSString*) state
@@ -105,8 +102,8 @@
                       withDescriptionString:(NSString*) descriptionString
                                 withHandler:(AppotaPaymentHandler)handler;
 #pragma mark - IBAction
-- (void) resendPaypal:(id) sender;
-- (void) confirmPaypal:(id) sender;
+//- (void) resendPaypal:(id) sender;
+//- (void) confirmPaypal:(id) sender;
 - (void) payCardAction:(id) sender;
 - (void) clickChooseMessage:(id) sender;
 - (void) clickChoosePaypal:(id) sender;

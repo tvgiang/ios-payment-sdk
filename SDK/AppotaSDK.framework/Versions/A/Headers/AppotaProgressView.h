@@ -1,5 +1,5 @@
 //
-//  MBProgressHUD.h
+//  AppotaMBProgressHUD.h
 //  Version 0.8
 //  Created by Matej Bukovinski on 2.4.09.
 //
@@ -30,32 +30,32 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@protocol AppotaPaymentSDKMBProgressHUDDelegate;
+@protocol AppotaPaymentSDKAppotaMBProgressHUDDelegate;
 
 
 typedef enum {
 	/** Progress is shown using an UIActivityIndicatorView. This is the default. */
-	MBProgressHUDModeIndeterminate,
+	AppotaMBProgressHUDModeIndeterminate,
 	/** Progress is shown using a round, pie-chart like, progress view. */
-	MBProgressHUDModeDeterminate,
+	AppotaMBProgressHUDModeDeterminate,
 	/** Progress is shown using a horizontal progress bar */
-	MBProgressHUDModeDeterminateHorizontalBar,
+	AppotaMBProgressHUDModeDeterminateHorizontalBar,
 	/** Progress is shown using a ring-shaped progress view. */
-	MBProgressHUDModeAnnularDeterminate,
+	AppotaMBProgressHUDModeAnnularDeterminate,
 	/** Shows a custom view */
-	MBProgressHUDModeCustomView,
+	AppotaMBProgressHUDModeCustomView,
 	/** Shows only labels */
-	MBProgressHUDModeText
-} MBProgressHUDMode;
+	AppotaMBProgressHUDModeText
+} AppotaMBProgressHUDMode;
 
 typedef enum {
 	/** Opacity animation */
-	MBProgressHUDAnimationFade,
+	AppotaMBProgressHUDAnimationFade,
 	/** Opacity + scale animation */
-	MBProgressHUDAnimationZoom,
-	MBProgressHUDAnimationZoomOut = MBProgressHUDAnimationZoom,
-	MBProgressHUDAnimationZoomIn
-} MBProgressHUDAnimation;
+	AppotaMBProgressHUDAnimationZoom,
+	AppotaMBProgressHUDAnimationZoomOut = AppotaMBProgressHUDAnimationZoom,
+	AppotaMBProgressHUDAnimationZoomIn
+} AppotaMBProgressHUDAnimation;
 
 
 #ifndef MB_INSTANCETYPE
@@ -85,7 +85,7 @@ typedef enum {
 #endif
 
 #if NS_BLOCKS_AVAILABLE
-typedef void (^MBProgressHUDCompletionBlock)();
+typedef void (^AppotaMBProgressHUDCompletionBlock)();
 #endif
 
 
@@ -93,15 +93,15 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
  *
  * This is a simple drop-in class for displaying a progress HUD view similar to Apple's private UIProgressHUD class.
- * The MBProgressHUD window spans over the entire space given to it by the initWithFrame constructor and catches all
+ * The AppotaMBProgressHUD window spans over the entire space given to it by the initWithFrame constructor and catches all
  * user input on this region, thereby preventing the user operations on components below the view. The HUD itself is
  * drawn centered as a rounded semi-transparent view which resizes depending on the user specified content.
  *
  * This view supports four modes of operation:
- * - MBProgressHUDModeIndeterminate - shows a UIActivityIndicatorView
- * - MBProgressHUDModeDeterminate - shows a custom round progress indicator
- * - MBProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator
- * - MBProgressHUDModeCustomView - shows an arbitrary, user specified view (@see customView)
+ * - AppotaMBProgressHUDModeIndeterminate - shows a UIActivityIndicatorView
+ * - AppotaMBProgressHUDModeDeterminate - shows a custom round progress indicator
+ * - AppotaMBProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator
+ * - AppotaMBProgressHUDModeCustomView - shows an arbitrary, user specified view (@see customView)
  *
  * All three modes can have optional labels assigned:
  * - If the labelText property is set and non-empty then a label containing the provided content is placed below the
@@ -161,7 +161,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * Finds all HUD subviews and returns them.
  *
  * @param view The view that is going to be searched.
- * @return All found HUD views (array of MBProgressHUD objects).
+ * @return All found HUD views (array of AppotaMBProgressHUD objects).
  */
 + (NSArray *)allHUDsForView:(UIView *)view;
 
@@ -246,7 +246,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  *
  * @see showAnimated:whileExecutingBlock:onQueue:completionBlock:
  */
-- (void)showAnimated:(BOOL)animated whileExecutingBlock:(dispatch_block_t)block completionBlock:(MBProgressHUDCompletionBlock)completion;
+- (void)showAnimated:(BOOL)animated whileExecutingBlock:(dispatch_block_t)block completionBlock:(AppotaMBProgressHUDCompletionBlock)completion;
 
 /**
  * Shows the HUD while a block is executing on the specified dispatch queue, then hides the HUD.
@@ -267,31 +267,31 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * @see completionBlock
  */
 - (void)showAnimated:(BOOL)animated whileExecutingBlock:(dispatch_block_t)block onQueue:(dispatch_queue_t)queue
-		  completionBlock:(MBProgressHUDCompletionBlock)completion;
+		  completionBlock:(AppotaMBProgressHUDCompletionBlock)completion;
 
 /**
  * A block that gets called after the HUD was completely hidden.
  */
-@property (copy) MBProgressHUDCompletionBlock completionBlock;
+@property (copy) AppotaMBProgressHUDCompletionBlock completionBlock;
 
 #endif
 
 /** 
- * MBProgressHUD operation mode. The default is MBProgressHUDModeIndeterminate.
+ * AppotaMBProgressHUD operation mode. The default is AppotaMBProgressHUDModeIndeterminate.
  *
- * @see MBProgressHUDMode
+ * @see AppotaMBProgressHUDMode
  */
-@property (assign) MBProgressHUDMode mode;
+@property (assign) AppotaMBProgressHUDMode mode;
 
 /**
  * The animation type that should be used when the HUD is shown and hidden. 
  *
- * @see MBProgressHUDAnimation
+ * @see AppotaMBProgressHUDAnimation
  */
-@property (assign) MBProgressHUDAnimation animationType;
+@property (assign) AppotaMBProgressHUDAnimation animationType;
 
 /**
- * The UIView (e.g., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView.
+ * The UIView (e.g., a UIImageView) to be shown when the HUD is in AppotaMBProgressHUDModeCustomView.
  * For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds). 
  */
 @property (MB_STRONG) UIView *customView;
@@ -299,9 +299,9 @@ typedef void (^MBProgressHUDCompletionBlock)();
 /** 
  * The HUD delegate object. 
  *
- * @see AppotaPaymentSDKMBProgressHUDDelegate
+ * @see AppotaPaymentSDKAppotaMBProgressHUDDelegate
  */
-@property (MB_WEAK) id<AppotaPaymentSDKMBProgressHUDDelegate> delegate;
+@property (MB_WEAK) id<AppotaPaymentSDKAppotaMBProgressHUDDelegate> delegate;
 
 /** 
  * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
@@ -427,7 +427,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
 @end
 
 
-@protocol AppotaPaymentSDKMBProgressHUDDelegate <NSObject>
+@protocol AppotaPaymentSDKAppotaMBProgressHUDDelegate <NSObject>
 
 @optional
 
@@ -442,7 +442,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
 /**
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
-@interface MBRoundProgressView : UIView 
+@interface AppotaMBRoundProgressView : UIView 
 
 /**
  * Progress (0.0 to 1.0)
