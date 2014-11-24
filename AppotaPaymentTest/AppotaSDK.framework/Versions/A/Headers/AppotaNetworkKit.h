@@ -62,7 +62,7 @@
 #import <AppotaSDK/NSString+AppotaNetworkKitAdditions.h>
 #import <AppotaSDK/NSDictionary+RequestEncoding.h>
 #import <AppotaSDK/NSDate+RFC1123.h>
-#import <AppotaSDK/NSData+Base64.h>
+//#import <AppotaSDK/NSData+Base64.h>
 
 #if TARGET_OS_IPHONE
 #import <AppotaSDK/UIAlertView+AppotaNetworkKitAdditions.h>
