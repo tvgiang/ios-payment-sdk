@@ -44,6 +44,7 @@
   isViewInvisible: (BOOL)isViewInvisible
          delegate: (id <AppotaDialogDelegate>) delegate;
 - (void)show;
+- (void) showWithAnimation:(BOOL) animation;
 - (void)cancel;
 - (void) showSpinner;
 - (void)hideSpinner;

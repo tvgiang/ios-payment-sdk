@@ -16,6 +16,8 @@
 + (UIImage*) imageNamed:(NSString*) imageName;
 + (UIViewController *) firstAvailableUIViewController:(UIView*) v;
 + (CGSize) getWindowSize;
++ (CGRect) getKeyWindowFrame;
++ (CGRect) getViewFrameWithSize:(CGSize) imageSize;
 + (NSArray*) getListSMSOptionWithSMSListAmount:(NSArray*) listSMSAmount
                           withSMSStructureDict:(NSDictionary*) smsDict;
 +(void) alertWithTitle:(NSString*) alertTitle
