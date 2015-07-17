@@ -5,7 +5,7 @@ Other languages: [English](README_EN.md) | [Chinese](README_CN.md)
 Appota Payment SDK cho iOS là cách đơn giản nhất để tích hợp thanh toán
 cho ứng dụng của bạn trên hệ thống Appota. SDK này cung cấp giải pháp
 cho các hình thức thanh toán: SMS, thẻ cào, internet banking, Paypal và
-Apple Payment.
+Apple Payment. Chi tiết về phương thức kết nối xin liên hệ sale@appota.com.
 
 **Các bước tích hợp SDK:**
 
